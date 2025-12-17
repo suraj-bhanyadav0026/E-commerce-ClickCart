@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ClickCart</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🛒</span>
+                <span class="logo-text">Click<span class="accent">Cart</span></span>
+            </a>
+            <span class="admin-badge">Admin</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="products.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+            <a href="orders.html" class="nav-item">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Orders</span>
+            </a>
+            <a href="users.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Users</span>
+            </a>
+            <a href="coupons.html" class="nav-item">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Coupons</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="../index.html" class="nav-item">
+                <i class="fas fa-store"></i>
+                <span>View Store</span>
+            </a>
+            <button class="nav-item" onclick="Auth.logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="admin-user">
+                    <span id="adminName">Admin</span>
+                    <div class="admin-avatar">A</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-rupee-sign"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalRevenue">₹0</span>
+                        <span class="stat-label">Total Revenue</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalOrders">0</span>
+                        <span class="stat-label">Total Orders</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="fas fa-box"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalProducts">0</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalUsers">0</span>
+                        <span class="stat-label">Customers</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts & Tables -->
+            <div class="dashboard-grid">
+                <!-- Recent Orders -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Orders</h3>
+                        <a href="orders.html" class="view-all">View All</a>
+                    </div>
+                    <div class="orders-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrders">
+                                <tr>
+                                    <td colspan="5" class="loading">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Order Status -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Order Status</h3>
+                    </div>
+                    <div class="status-list" id="orderStatusList">
+                        <div class="status-item">
+                            <span class="status-dot pending"></span>
+                            <span>Pending</span>
+                            <span class="status-count">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-dot confirmed"></span>
+                            <span>Confirmed</span>
+                            <span class="status-count">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-dot shipped"></span>
+                            <span>Shipped</span>
+                            <span class="status-count">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-dot delivered"></span>
+                            <span>Delivered</span>
+                            <span class="status-count">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-dot cancelled"></span>
+                            <span>Cancelled</span>
+                            <span class="status-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Sales Chart Placeholder -->
+            <div class="dashboard-card full-width">
+                <div class="card-header">
+                    <h3>Monthly Sales Overview</h3>
+                </div>
+                <div class="chart-placeholder" id="salesChart">
+                    <div class="chart-bars">
+                        <div class="chart-bar" style="height: 60%"><span>Jan</span></div>
+                        <div class="chart-bar" style="height: 80%"><span>Feb</span></div>
+                        <div class="chart-bar" style="height: 45%"><span>Mar</span></div>
+                        <div class="chart-bar" style="height: 90%"><span>Apr</span></div>
+                        <div class="chart-bar" style="height: 70%"><span>May</span></div>
+                        <div class="chart-bar" style="height: 85%"><span>Jun</span></div>
+                        <div class="chart-bar" style="height: 95%"><span>Jul</span></div>
+                        <div class="chart-bar" style="height: 75%"><span>Aug</span></div>
+                        <div class="chart-bar" style="height: 65%"><span>Sep</span></div>
+                        <div class="chart-bar" style="height: 88%"><span>Oct</span></div>
+                        <div class="chart-bar" style="height: 92%"><span>Nov</span></div>
+                        <div class="chart-bar active" style="height: 100%"><span>Dec</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
+

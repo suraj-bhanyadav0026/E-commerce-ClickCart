@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - ClickCart</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg-animation">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header glass" id="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🛒</span>
+                <span class="logo-text">Click<span class="accent">Cart</span></span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="products.html" class="nav-link active">Products</a>
+                <a href="products.html?category=clothing" class="nav-link">Clothing</a>
+                <a href="products.html?category=electronics" class="nav-link">Electronics</a>
+                <a href="products.html?category=accessories" class="nav-link">Accessories</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <a href="wishlist.html" class="icon-btn" title="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </a>
+                
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+
+                <div class="user-menu" id="userMenu">
+                    <button class="icon-btn user-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown"></div>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="products-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span id="currentCategory">All Products</span>
+                </div>
+                <h1 class="page-title" id="pageTitle">All <span class="gradient-text">Products</span></h1>
+                <p class="page-subtitle">Discover our amazing collection</p>
+            </div>
+
+            <div class="products-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar glass" id="filtersSidebar">
+                    <div class="filters-header">
+                        <h3><i class="fas fa-filter"></i> Filters</h3>
+                        <button class="clear-filters" onclick="clearFilters()">Clear All</button>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <div class="filter-options" id="categoryFilters">
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="" checked>
+                                <span>All Categories</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="clothing">
+                                <span>Clothing</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="electronics">
+                                <span>Electronics</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="accessories">
+                                <span>Accessories</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="footwear">
+                                <span>Footwear</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="beauty">
+                                <span>Beauty</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="category" value="sports">
+                                <span>Sports</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-inputs">
+                            <input type="number" id="minPrice" placeholder="Min" min="0">
+                            <span>-</span>
+                            <input type="number" id="maxPrice" placeholder="Max" min="0">
+                        </div>
+                        <button class="btn btn-sm btn-secondary" onclick="applyPriceFilter()">Apply</button>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="radio" name="rating" value="">
+                                <span>All Ratings</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="rating" value="4">
+                                <span class="stars-filter">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    & Up
+                                </span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="rating" value="3">
+                                <span class="stars-filter">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                    & Up
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Brands -->
+                    <div class="filter-group">
+                        <h4>Brands</h4>
+                        <div class="filter-options" id="brandFilters">
+                            <!-- Loaded dynamically -->
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Area -->
+                <div class="products-area">
+                    <!-- Toolbar -->
+                    <div class="products-toolbar">
+                        <div class="results-count">
+                            Showing <span id="resultsCount">0</span> products
+                        </div>
+                        <div class="toolbar-actions">
+                            <button class="filter-toggle" onclick="toggleFilters()">
+                                <i class="fas fa-filter"></i> Filters
+                            </button>
+                            <select id="sortSelect" onchange="applySort()">
+                                <option value="newest">Newest First</option>
+                                <option value="price_asc">Price: Low to High</option>
+                                <option value="price_desc">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                            <div class="view-toggle">
+                                <button class="active" onclick="setGridView('grid')"><i class="fas fa-th"></i></button>
+                                <button onclick="setGridView('list')"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Filters -->
+                    <div class="active-filters" id="activeFilters" style="display: none;">
+                        <!-- Dynamically populated -->
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <div class="loading-skeleton">
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="pagination">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🛒</span>
+                        <span class="logo-text">Click<span class="accent">Cart</span></span>
+                    </a>
+                    <p>Your premium destination for quality products.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="products.html">All Products</a>
+                    <a href="products.html?category=clothing">Clothing</a>
+                    <a href="products.html?category=electronics">Electronics</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Account</h4>
+                    <a href="profile.html">My Profile</a>
+                    <a href="orders.html">Orders</a>
+                    <a href="wishlist.html">Wishlist</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ClickCart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass">
+            <button class="modal-close" id="closeLoginModal">&times;</button>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="register">Register</button>
+                </div>
+                <form class="auth-form" id="loginForm">
+                    <h2>Welcome Back!</h2>
+                    <p>Login to access your account</p>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                <form class="auth-form hidden" id="registerForm">
+                    <h2>Create Account</h2>
+                    <p>Join us and start shopping</p>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required placeholder="Create a password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirmPassword" required placeholder="Confirm password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
+

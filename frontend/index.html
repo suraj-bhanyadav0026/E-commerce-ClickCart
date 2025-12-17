@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCart - Premium Shopping Experience</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-sphere sphere-1"></div>
+        <div class="gradient-sphere sphere-2"></div>
+        <div class="gradient-sphere sphere-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header glass" id="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🛒</span>
+                <span class="logo-text">Click<span class="accent">Cart</span></span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="products.html?category=clothing" class="nav-link">Clothing</a>
+                <a href="products.html?category=electronics" class="nav-link">Electronics</a>
+                <a href="products.html?category=accessories" class="nav-link">Accessories</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <a href="wishlist.html" class="icon-btn" title="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlistCount">0</span>
+                </a>
+                
+                <a href="cart.html" class="icon-btn" title="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+
+                <div class="user-menu" id="userMenu">
+                    <button class="icon-btn user-btn" id="userBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <!-- Dynamic content based on login state -->
+                    </div>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">✨ New Collection 2024</span>
+                <h1 class="hero-title">
+                    Discover Your
+                    <span class="gradient-text">Perfect Style</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Explore our curated collection of premium products. From trending fashion to cutting-edge electronics.
+                </p>
+                <div class="hero-buttons">
+                    <a href="products.html" class="btn btn-primary btn-lg">
+                        <span>Shop Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#featured" class="btn btn-outline btn-lg">
+                        <span>View Collection</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Customers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card card-1">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Product">
+                    <div class="card-overlay">
+                        <span class="card-price">₹2,499</span>
+                    </div>
+                </div>
+                <div class="hero-card card-2">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Product">
+                    <div class="card-overlay">
+                        <span class="card-price">₹1,999</span>
+                    </div>
+                </div>
+                <div class="hero-card card-3">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400" alt="Product">
+                    <div class="card-overlay">
+                        <span class="card-price">₹3,499</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shop by <span class="gradient-text">Category</span></h2>
+                <p class="section-subtitle">Browse our wide range of categories</p>
+            </div>
+            <div class="categories-grid">
+                <a href="products.html?category=clothing" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Clothing</h3>
+                    <span class="category-count">500+ Items</span>
+                </a>
+                <a href="products.html?category=electronics" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Electronics</h3>
+                    <span class="category-count">300+ Items</span>
+                </a>
+                <a href="products.html?category=accessories" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-watch"></i>
+                    </div>
+                    <h3>Accessories</h3>
+                    <span class="category-count">200+ Items</span>
+                </a>
+                <a href="products.html?category=footwear" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>Footwear</h3>
+                    <span class="category-count">150+ Items</span>
+                </a>
+                <a href="products.html?category=beauty" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Beauty</h3>
+                    <span class="category-count">250+ Items</span>
+                </a>
+                <a href="products.html?category=sports" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Sports</h3>
+                    <span class="category-count">180+ Items</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured section" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured <span class="gradient-text">Products</span></h2>
+                <p class="section-subtitle">Handpicked products just for you</p>
+                <a href="products.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products loaded via JS -->
+                <div class="loading-skeleton">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deals Banner -->
+    <section class="deals-banner">
+        <div class="container">
+            <div class="deals-content">
+                <span class="deals-badge">🔥 Limited Time Offer</span>
+                <h2>Up to 50% Off</h2>
+                <p>On selected items. Don't miss out!</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Mins</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Secs</span>
+                    </div>
+                </div>
+                <a href="products.html?sort=discount" class="btn btn-light btn-lg">Shop Deals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">New <span class="gradient-text">Arrivals</span></h2>
+                <p class="section-subtitle">Fresh drops you'll love</p>
+            </div>
+            <div class="products-grid" id="newArrivals">
+                <!-- Products loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3>Free Shipping</h3>
+                    <p>On orders above ₹500</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3>Secure Payment</h3>
+                    <p>100% secure payments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rotate-left"></i>
+                    </div>
+                    <h3>Easy Returns</h3>
+                    <p>7-day return policy</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter section">
+        <div class="container">
+            <div class="newsletter-card glass">
+                <div class="newsletter-content">
+                    <h2>Get 10% Off Your First Order</h2>
+                    <p>Subscribe to our newsletter and stay updated with the latest trends and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">🛒</span>
+                        <span class="logo-text">Click<span class="accent">Cart</span></span>
+                    </a>
+                    <p>Your premium destination for quality products at unbeatable prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="products.html">All Products</a>
+                    <a href="products.html?category=clothing">Clothing</a>
+                    <a href="products.html?category=electronics">Electronics</a>
+                    <a href="products.html?category=accessories">Accessories</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="shipping.html">Shipping Info</a>
+                    <a href="returns.html">Returns</a>
+                </div>
+                <div class="footer-links">
+                    <h4>My Account</h4>
+                    <a href="profile.html">My Profile</a>
+                    <a href="orders.html">Order History</a>
+                    <a href="wishlist.html">Wishlist</a>
+                    <a href="track-order.html">Track Order</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ClickCart. All rights reserved. | Built for BTech Final Year Project</p>
+                <div class="payment-methods">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://razorpay.com/assets/razorpay-glyph.svg" alt="Razorpay">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass">
+            <button class="modal-close" id="closeLoginModal">&times;</button>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="register">Register</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form class="auth-form" id="loginForm">
+                    <h2>Welcome Back!</h2>
+                    <p>Login to access your account</p>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required placeholder="Enter your password">
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <div class="auth-divider">
+                        <span>or continue with</span>
+                    </div>
+                    <div class="social-auth">
+                        <button type="button" class="btn btn-social"><i class="fab fa-google"></i> Google</button>
+                    </div>
+                </form>
+
+                <!-- Register Form -->
+                <form class="auth-form hidden" id="registerForm">
+                    <h2>Create Account</h2>
+                    <p>Join us and start shopping</p>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required placeholder="Create a password" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirmPassword" required placeholder="Confirm your password">
+                    </div>
+                    <label class="checkbox">
+                        <input type="checkbox" required> I agree to the Terms & Conditions
+                    </label>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
+
